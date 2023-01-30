@@ -5,7 +5,7 @@ describe('SignUp Controller', () => {
     // given
     const signUpController = new SignUpController();
     const httpRequest = {
-      bode: {
+      body: {
         email: "doe@mail.com",
         password: "my_password",
         passwordConfirmation: "my_password"
@@ -24,7 +24,7 @@ describe('SignUp Controller', () => {
     // given
     const signUpController = new SignUpController();
     const httpRequest = {
-      bode: {
+      body: {
         name: "John Doe",
         password: "my_password",
         passwordConfirmation: "my_password"
