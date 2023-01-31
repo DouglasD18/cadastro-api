@@ -231,4 +231,52 @@ describe('SignUp Controller', () => {
       password: "my_password"
     });
   })
+
+  it('Should return 500 if AddAccount throws', () => {
+    // given
+    const { controller, addAccountStub } = makeController();
+    const httpRequest = {
+      body: {
+        name: "John Doe",
+        email: "doe@mail.com",
+        password: "my_password",
+        passwordConfirmation: "my_password"
+      }
+    }
+    
+    // when
+    jest.spyOn(addAccountStub, "add").mockImplementationOnce(() => {
+      throw new Error();
+    })
+    const httpResponse = controller.handle(httpRequest);
+
+    // then
+    expect(httpResponse.statusCode).toBe(500);
+    expect(httpResponse.body).toEqual(new ServerError());
+  })
+
+  it('Should return 200 if valid values is provided.', () => {
+    // given
+    const { controller } = makeController();
+    const httpRequest = {
+      body: {
+        name: "valid_name",
+        email: "valid@mail.com",
+        password: "valid_password",
+        passwordConfirmation: "valid_password"
+      }
+    }
+    
+    // when
+    const httpResponse = controller.handle(httpRequest);
+
+    // then
+    expect(httpResponse.statusCode).toBe(200);
+    expect(httpResponse.body).toEqual({
+      id: "valid_id",
+      name: "valid_name",
+        email: "valid@mail.com",
+        password: "valid_password"
+    });
+  })
 })
