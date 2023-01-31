@@ -1,8 +1,6 @@
 import { SignUpController } from "./signup";
-import { EmailValidator } from "../protocols";
-import { MissingParamError, InvalidParamError, ServerError } from "../errors";
-import { AddAccount, AddAccountModel } from "@/domain/useCases/add-account";
-import { AccountModel } from "@/domain/models/account";
+import { AccountModel, AddAccount, AddAccountModel, EmailValidator } from "./signup-protocols";
+import { MissingParamError, InvalidParamError, ServerError } from "../../errors";
 
 interface ControllerTypes {
   controller: SignUpController
