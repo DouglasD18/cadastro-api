@@ -1,7 +1,5 @@
 # Cadastro API
 
-![]()
-
 # Contexto
 API de estudos de Clean Code e TDD.
 
@@ -20,6 +18,7 @@ Here are the technologies used in this project.
 * Ts-jest
 * Jest
 * Supertest
+* Swagger
 
 ## Features
 
